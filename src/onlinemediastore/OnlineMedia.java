@@ -1,6 +1,8 @@
 package onlinemediastore;
 
 import java.util.Properties;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class OnlineMedia {
 	
@@ -28,6 +30,15 @@ public class OnlineMedia {
         );
         order.addItem(dvd2);
 
+        ArrayList<String> authors = new ArrayList<>(Arrays.asList(properties.getProperty("book1.authors").split(",")));
+        Book book1 = new Book(
+                properties.getProperty("book1.title"),
+                properties.getProperty("book1.category"),
+                Double.parseDouble(properties.getProperty("book1.price")),
+                authors
+        );
+        order.addItem(book1);
+        
         System.out.println("Comanda finală:");
         System.out.println(order); 
         System.out.println("Total: $" + order.calculateTotal());
