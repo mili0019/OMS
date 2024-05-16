@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 
 public class DataFromProperties {
@@ -62,6 +64,8 @@ public class DataFromProperties {
             Track track = createTrack(properties, prefix + ".track" + i);
             cd.addTrack(track);
         }
+        List<Track> tracks = cd.getTracks();
+        Collections.sort(tracks);
         return cd;
     }
 

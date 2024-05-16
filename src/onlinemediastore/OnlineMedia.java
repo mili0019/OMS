@@ -3,6 +3,7 @@ package onlinemediastore;
 import java.util.Properties;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class OnlineMedia {
 	
@@ -26,6 +27,9 @@ public class OnlineMedia {
         CompactDisc cd1 = DataFromProperties.createCompactDisc(properties, "cd1");
         cd1.play();
         order.addItem(cd1);
+        
+        ArrayList<Track> tracks = cd1.getTracks();
+        Collections.sort(tracks);
         
         System.out.println();
         System.out.println("Order:");
