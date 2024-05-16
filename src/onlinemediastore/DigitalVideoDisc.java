@@ -41,9 +41,13 @@ public class DigitalVideoDisc extends Media implements Playable {
     }
     
     @Override
-    public void play() {
-        System.out.println("Playing DVD: " + getTitle());
-        System.out.println("Director: " + director);
-        System.out.println("Length: " + length + " minutes");
+    public void play() throws PlayerException {
+        if (length == 0) {
+            throw new PlayerException("Cannot play the DVD: " + getTitle() + ". Length is 0.");
+        } else {
+            System.out.println("Playing DVD: " + getTitle());
+            System.out.println("Director: " + getDirector());
+            System.out.println("Length: " + length + " minutes");
+        }
     }
 }

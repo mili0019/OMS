@@ -1,5 +1,5 @@
 package onlinemediastore;
 
 public interface Playable {
-	void play();
+	void play() throws PlayerException;;
 }

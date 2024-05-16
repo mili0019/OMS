@@ -36,9 +36,13 @@ public class Track implements Playable, Comparable<Track> {
     }
     
     @Override
-    public void play() {
-        System.out.println("Playing Track: " + title);
-        System.out.println("Length: " + length + " seconds");
+    public void play() throws PlayerException {
+        if (length == 0) {
+            throw new PlayerException("Cannot play the track: " + title + ". Length is 0.");
+        } else {
+            System.out.println("Playing Track: " + title);
+            System.out.println("Length: " + length + " seconds");
+        }
     }
     
     @Override

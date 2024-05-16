@@ -43,11 +43,15 @@ public class CompactDisc extends Media implements Playable {
     }
     
     @Override
-    public void play() {
+    public void play() throws PlayerException {
         System.out.println("Playing CD: " + getTitle());
         System.out.println("Artist: " + artist);
         for (Track track : trackLibrary.getItems()) {
-            track.play();
+            try {
+                track.play();
+            } catch (PlayerException e) {
+                System.out.println("Error playing track: " + e.getMessage());
+            }
         }
     }
 }
