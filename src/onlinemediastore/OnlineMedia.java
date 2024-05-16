@@ -9,6 +9,11 @@ public class OnlineMedia {
 	
     public static void main(String[] args) {
         
+    	MemoryDaemon memoryDaemon = new MemoryDaemon();
+        Thread memoryThread = new Thread(memoryDaemon);
+        memoryThread.setDaemon(true);
+        memoryThread.start();
+    	
         Properties properties = DataFromProperties.readProperties();
 
         Order order = new Order(10); 
@@ -54,14 +59,15 @@ public class OnlineMedia {
         System.out.println(order); 
         System.out.println("TOTAL: $" + order.calculateTotal() + "\n");
         
-        //serializare
+        //Serialization
         OrderSaver.saveOrder(order, "order.ser");
-        //deserializare
+        //Deserialization
         Order restoredOrder = OrderSaver.restoreOrder("order.ser");
         if (restoredOrder != null) {
             System.out.println("Restored Order:");
             System.out.println(restoredOrder);
         }
+        
+        memoryDaemon.stop();
     }
-    
 }
