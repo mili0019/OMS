@@ -62,7 +62,7 @@ public class DataFromProperties {
         int trackCount = Integer.parseInt(properties.getProperty(prefix + ".track.count"));
         for (int i = 1; i <= trackCount; i++) {
             Track track = createTrack(properties, prefix + ".track" + i);
-            cd.addTrack(track);
+            cd.getTracks().add(track);
         }
         List<Track> tracks = cd.getTracks();
         Collections.sort(tracks);

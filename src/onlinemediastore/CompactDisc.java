@@ -1,15 +1,15 @@
 package onlinemediastore;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CompactDisc extends Media implements Playable {
 	private String artist;
-    private ArrayList<Track> tracks;
+	private Library<Track> trackLibrary;
 
     public CompactDisc(String title, String category, double cost, String artist) {
         super(title, category, cost);
         this.artist = artist;
-        this.tracks = new ArrayList<>();
+        this.trackLibrary = new Library<>();
     }
 
     // Getters
@@ -17,24 +17,28 @@ public class CompactDisc extends Media implements Playable {
         return artist;
     }
 
-    public ArrayList<Track> getTracks() {
-        return tracks;
+    public List<Track> getTracks() {
+        return trackLibrary.getItems();
     }
 
     // Setters
     public void setArtist(String artist) {
         this.artist = artist;
     }
-
+    
     public void addTrack(Track track) {
-        this.tracks.add(track);
+        trackLibrary.addItem(track);
+    }
+
+    public void removeTrack(Track track) {
+        trackLibrary.removeItem(track);
     }
 
     @Override
     public String toString() {
         return "CompactDisc{" +
                 "artist='" + artist + '\'' +
-                ", tracks=" + tracks +
+                ", tracks=" + trackLibrary.getItems() +
                 "} " + super.toString();
     }
     
@@ -42,7 +46,7 @@ public class CompactDisc extends Media implements Playable {
     public void play() {
         System.out.println("Playing CD: " + getTitle());
         System.out.println("Artist: " + artist);
-        for (Track track : tracks) {
+        for (Track track : trackLibrary.getItems()) {
             track.play();
         }
     }

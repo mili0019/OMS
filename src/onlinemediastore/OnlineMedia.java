@@ -27,10 +27,22 @@ public class OnlineMedia {
         CompactDisc cd1 = DataFromProperties.createCompactDisc(properties, "cd1");
         cd1.play();
         order.addItem(cd1);
-        
-        ArrayList<Track> tracks = cd1.getTracks();
-        Collections.sort(tracks);
-        
+
+
+        Track newTrack = new Track("New Song", 300);
+        System.out.println("\nAdd track:");
+        cd1.getTracks().add(newTrack);
+        for (Track track : cd1.getTracks()) {
+            System.out.println(track);
+        }
+        System.out.println("\nRemove track:");
+        if (!cd1.getTracks().isEmpty()) {
+            cd1.getTracks().remove(0);
+        }
+        for (Track track : cd1.getTracks()) {
+            System.out.println(track);
+        }
+     
         System.out.println();
         System.out.println("Order:");
         System.out.println(order); 
