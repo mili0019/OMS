@@ -1,6 +1,6 @@
 package onlinemediastore;
 
-public class Track {
+public class Track implements Playable {
 	private String title;
     private int length;
 
@@ -33,5 +33,11 @@ public class Track {
                 "title='" + title + '\'' +
                 ", length=" + length +
                 '}';
+    }
+    
+    @Override
+    public void play() {
+        System.out.println("Playing Track: " + title);
+        System.out.println("Length: " + length + " seconds");
     }
 }

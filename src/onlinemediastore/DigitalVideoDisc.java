@@ -1,6 +1,6 @@
 package onlinemediastore;
 
-public class DigitalVideoDisc extends Media {
+public class DigitalVideoDisc extends Media implements Playable {
     private String director;
     private int length;
     
@@ -38,5 +38,12 @@ public class DigitalVideoDisc extends Media {
                 ", director='" + director + '\'' +
                 ", length=" + length +
                 '}';
+    }
+    
+    @Override
+    public void play() {
+        System.out.println("Playing DVD: " + getTitle());
+        System.out.println("Director: " + director);
+        System.out.println("Length: " + length + " minutes");
     }
 }

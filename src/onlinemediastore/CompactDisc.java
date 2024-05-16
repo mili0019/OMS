@@ -2,7 +2,7 @@ package onlinemediastore;
 
 import java.util.ArrayList;
 
-public class CompactDisc extends Media{
+public class CompactDisc extends Media implements Playable {
 	private String artist;
     private ArrayList<Track> tracks;
 
@@ -36,5 +36,14 @@ public class CompactDisc extends Media{
                 "artist='" + artist + '\'' +
                 ", tracks=" + tracks +
                 "} " + super.toString();
+    }
+    
+    @Override
+    public void play() {
+        System.out.println("Playing CD: " + getTitle());
+        System.out.println("Artist: " + artist);
+        for (Track track : tracks) {
+            track.play();
+        }
     }
 }
