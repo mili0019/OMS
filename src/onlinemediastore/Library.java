@@ -1,9 +1,10 @@
 package onlinemediastore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library<T> {
+public class Library<T> implements Serializable {
 	private List<T> items;
 
     public Library() {

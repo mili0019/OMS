@@ -1,6 +1,8 @@
 package onlinemediastore;
 
-public abstract class Media {
+import java.io.Serializable;
+
+public abstract class Media implements Serializable{
 	protected String title;
     protected String category;
     protected double cost;

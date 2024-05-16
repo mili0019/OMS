@@ -29,6 +29,7 @@ public class OnlineMedia {
 
 	        cd1.play();
 	        order.addItem(cd1);
+
         } catch (PlayerException e) {
             System.out.println("Error playing media: " + e.getMessage());
         }
@@ -51,7 +52,16 @@ public class OnlineMedia {
         System.out.println();
         System.out.println("Order:");
         System.out.println(order); 
-        System.out.println("TOTAL: $" + order.calculateTotal());
+        System.out.println("TOTAL: $" + order.calculateTotal() + "\n");
+        
+        //serializare
+        OrderSaver.saveOrder(order, "order.ser");
+        //deserializare
+        Order restoredOrder = OrderSaver.restoreOrder("order.ser");
+        if (restoredOrder != null) {
+            System.out.println("Restored Order:");
+            System.out.println(restoredOrder);
+        }
     }
     
 }

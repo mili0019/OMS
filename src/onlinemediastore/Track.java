@@ -1,6 +1,8 @@
 package onlinemediastore;
 
-public class Track implements Playable, Comparable<Track> {
+import java.io.Serializable;
+
+public class Track implements Playable, Comparable<Track>, Serializable {
 	private String title;
     private int length;
 
